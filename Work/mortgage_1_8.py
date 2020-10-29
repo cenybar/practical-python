@@ -14,18 +14,19 @@ rate = 0.05
 payment = 2684.11
 total_paid = 0.0
 months = 0
-
-start = 0
-end = 12
 extra = 1000
 
 
 while principal > 0:
-        principal = principal * (1+rate/12) - payment
-        total_paid = total_paid + payment
-        months += 1
-    
+        if months < 12:
+                principal = principal * (1+rate/12) - payment - extra 
+                total_paid = total_paid + payment + extra
+                months += 1
+        else: 
+                principal = principal * (1+rate/12) - payment 
+                total_paid = total_paid + payment
+                months += 1 
+                
 
-
-print('Total payment of {0} over {1} months.'.format(total_paid,months))
+print('Total payment of {0} over {1} months.'.format(round(total_paid,2),months))
 
